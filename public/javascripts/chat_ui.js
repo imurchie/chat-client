@@ -26,15 +26,32 @@
 		$('ul.chat-content').append($li);
 	});
 
-	chat.on("roomListUpdate", function(data) {
-		var $el = $(".client-list");
-		$el.empty();
-		data.nicknameList.forEach(function(user) {
-			$el.append("<li>" + user + "</li>");
-		})
-	});
+	// chat.on("roomListUpdate", function(data) {
+	// 	var $el = $(".client-list");
+	// 	$el.empty();
+	// 	data.nicknameList.forEach(function(user) {
+	// 		$el.append("<li>" + user + "</li>");
+	// 	})
+	// });
 
 	chat.on("roomChange", function () {
 		$('ul.chat-content').empty()
-	})
+	});
+
+	chat.on("roomList", function(data) {
+		var $el = $(".room-list");
+		// debugger
+		$el.empty();
+		for(var room in data) {
+			var $roomList = $("<li>" + room + "</li>");
+			$el.append($roomList);
+
+			var $userList = $("<ul></ul>");
+			$roomList.append($userList);
+
+			data[room].forEach(function(user) {
+				$userList.append($("<li>" + user + "</li>"));
+			});
+		}
+	});
 })(this);
