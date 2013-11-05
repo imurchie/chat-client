@@ -33,4 +33,8 @@
 			$el.append("<li>" + user + "</li>");
 		})
 	});
+
+	chat.on("roomChange", function () {
+		$('ul.chat-content').empty()
+	})
 })(this);

@@ -32,6 +32,8 @@
 	Chat.prototype.processCommand = function(msg) {
 		if(msg.slice(0, 5) === "/nick") {
 			this.socket.emit("nicknameChangeRequest", msg.slice(6));
+		} else if (msg.slice(0, 5) === "/join") {
+			this.socket.emit("changeRoomRequest", msg.slice(6))
 		}
 	}
 
