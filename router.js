@@ -1,10 +1,10 @@
 var fs = require("fs");
 
-module.exports.route = function (req, res) {
+module.exports.router = function (req, res) {
 	if(req.url === "/") {
 		fs.readFile("public/index.html", { "encoding": "utf8"}, function(err, data) {
 			if(err) {
-				throw err;
+				res.writeHead(500);
 			} else {
 				res.write(data);
 				res.end();

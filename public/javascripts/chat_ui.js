@@ -26,14 +26,6 @@
 		$('ul.chat-content').append($li);
 	});
 
-	// chat.on("roomListUpdate", function(data) {
-	// 	var $el = $(".client-list");
-	// 	$el.empty();
-	// 	data.nicknameList.forEach(function(user) {
-	// 		$el.append("<li>" + user + "</li>");
-	// 	})
-	// });
-
 	chat.on("roomChange", function () {
 		$('ul.chat-content').empty()
 	});
